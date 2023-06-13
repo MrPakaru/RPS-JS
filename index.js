@@ -46,19 +46,34 @@ function playRound(x, y)
 }
 
 
-
-// console.log(playRound(computerSelection, playerSelection));
-
-// playRound(computerSelection, playerSelection);
-// console.log(playRound(computerSelection, playerSelection))
-
 function game()
 {
+    let score = 0;
+    let com = 0;
     for(let i = 0;i < 5;i++)
     {
         const playerSelection = playerChoice();
         const computerSelection = computerChoice();
         console.log(playRound(computerSelection, playerSelection));
+        if(playRound(computerSelection, playerSelection).includes('Win'))
+        {
+            score ++;
+        }
+        else if(playRound(computerSelection, playerSelection).includes('Lose'))
+        {
+            com ++;
+        }
+    }
+    if(score < com)
+    {
+        console.log('You Have Lost! ' + score + ' : ' + com);
+    }
+    else if(score > com)
+    {
+        console.log('You Have Won! ' + score + ' : ' + com);
+    }
+    else{
+        console.log('Gleichstand! ');
     }
 }
 
